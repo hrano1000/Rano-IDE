@@ -1,4 +1,4 @@
-# 🔎 Windows build and setup audit — Rano IDE 1.0.1
+# 🔎 Windows build and setup audit — Rano IDE 1.0.2
 
 Rano IDE can build supported iOS projects locally on Windows through WSL, without executing macOS. **It is not a universal replacement for every Xcode compiler, resource tool, simulator or test runner.** Framework detection, package installation, archive creation and Apple upload are different capabilities.
 
@@ -12,7 +12,20 @@ Rano IDE can build supported iOS projects locally on Windows through WSL, withou
 | React Native / Expo | Experimental Node/package-manager installation, native generation, CocoaPods/codegen and native release bundling. React Native 0.87.1 compiled with a separate QA programmatic launch configuration. The stock launch storyboard remains a blocker. Device execution and Apple acceptance of this path are unverified. |
 | Unity, .NET MAUI, Kotlin/Compose and other source frameworks | No verified end-to-end local adapter. An exported native project may have additional compiler/generation requirements. An existing compatible App Store IPA can be inspected and delivered irrespective of its original source framework. |
 
-## 🧰 What 1.0.1 fixes generally
+## 🛠️ What 1.0.2 fixes generally
+
+- Extended Windows paths are used for copying, folder traversal and cleanup. Large file comparisons use bounded memory.
+- Generated build/tool caches are excluded. For monorepos, ignored output outside the selected app is pruned while its local configuration and declared Flutter path packages are preserved. A home-directory dotfiles repository is not mistaken for the app's checkout.
+- The formerly failing real Flutter workspace staged successfully in about 15 seconds. Its ignored output/release caches were excluded. This is staging evidence, not a new iOS build or Apple submission.
+- Staging failures report the reason and affected file without dumping source/configuration contents. A free-space check avoids filling the drive, partial copies remain recognizable by Clean Build, and preparation can be cancelled.
+- New projects keep the default build selected; custom commands remain optional and project-specific.
+- **Dependencies** provides checks, compatible update previews and explicit Apply with manifest/lockfile backups. Flutter, npm, pinned pnpm/Yarn Classic and Swift package update actions are supported. Checks run in separate copies; a real npm update through the UI passed with the source lockfile retained during preview and the previous file verified in its backup.
+- **Help** and **About** use Rano IDE documentation and official GitHub links. Required third-party notices are retained.
+- The protected Apple upload, signing, archive and Flutter asset compiler files are unchanged.
+
+For the deeper runtime, installer and workspace audit, see [AUDIT-1.0.2.md](AUDIT-1.0.2.md).
+
+## 🧰 Previous 1.0.1 setup improvements
 
 - The installer shows **Create a desktop shortcut**, checked by default, and honors the selected preference.
 - **Check compatibility** is visible in the Workbench and Product menu. It reads project metadata, explains build/testing support and identifies referenced native resources that require unavailable compilers. It does not run scripts or upload anything.

@@ -8,7 +8,7 @@ licensed libraries and backend programs.
 
 The Windows installer extracts the application into a normal directory, with
 separate DLLs and extension modules in `_internal`. The app uses unmodified
-PySide6/Shiboken6/Qt 6.10.3 runtime libraries under their applicable LGPL
+PySide6/Shiboken6/Qt 6.11.2 runtime libraries under their applicable LGPL
 licenses. They are dynamically loaded; compatible replacement libraries are
 not blocked by application signature/hash checks at runtime.
 
@@ -16,14 +16,14 @@ The complete corresponding upstream source for these libraries, including the
 upstream build files, is available free of charge at these exact-version
 locations, separately from the Rano IDE application source:
 
-- **Qt 6.10.3 source modules:**
-  https://download.qt.io/archive/qt/6.10/6.10.3/submodules/
-- **Qt WebEngine 6.10.3 including its third-party source tree:**
-  https://download.qt.io/archive/qt/6.10/6.10.3/submodules/qtwebengine-everywhere-src-6.10.3.tar.xz
-- **PySide6 / Shiboken6 6.10.3 source and build files:**
-  https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.10.3-src/
+- **Qt 6.11.2 source modules:**
+  https://download.qt.io/archive/qt/6.11/6.11.2/submodules/
+- **Qt WebEngine 6.11.2 including its third-party source tree:**
+  https://download.qt.io/archive/qt/6.11/6.11.2/submodules/qtwebengine-everywhere-src-6.11.2.tar.xz
+- **PySide6 / Shiboken6 6.11.2 source and build files:**
+  https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.11.2-src/
 - **Exact PySide source tag:**
-  https://code.qt.io/cgit/pyside/pyside-setup.git/tag/?h=v6.10.3
+  https://code.qt.io/cgit/pyside/pyside-setup.git/tag/?h=v6.11.2
 
 Qt's module archives include the corresponding module source, license and build
 files. WebEngine includes Chromium and its third-party dependencies; obtain
@@ -74,7 +74,7 @@ Relevant sources include:
 
 The independently licensed **AGPL xcross patch and offline signing adapter**
 ship with their source/license in the runtime bundle. A separate
-`RanoIDE-1.0.0-backend-sources.zip` release asset provides the corresponding
+`RanoIDE-1.0.2-backend-sources.zip` release asset provides the corresponding
 pinned xcross source, patch, adapter, AGPL license and reproduction directions.
 This dependency source asset does **not** publish Rano IDE's desktop GUI source.
 The patched backend's source is also retained beside its local WSL executable

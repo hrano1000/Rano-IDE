@@ -1,6 +1,6 @@
 # Third-party notices
 
-Rano IDE 1.0.0's optional native setup downloads and compiles Swift Build revision `89af69d6b4effc57993c35181b8726d292749b47` (Apache-2.0 with the Swift Runtime Library Exception, with the project's own license files retained), pinned dependencies, Node.js 22.23.3 (MIT and bundled dependency notices retained), and CocoaPods 1.16.2 (MIT and individual gem licenses retained). These tools live in the user's isolated WSL installation. Their binaries are not bundled in the Windows installer. Sources: https://github.com/swiftlang/swift-build, https://nodejs.org/ and https://github.com/CocoaPods/CocoaPods. The local Swift Build source contains a scoped LLVM libtool version-parser compatibility change. Native source modules and JavaScript dependencies remain the user's project's declared dependencies and licenses.
+Rano IDE's optional native setup downloads and compiles Swift Build revision `89af69d6b4effc57993c35181b8726d292749b47` (Apache-2.0 with the Swift Runtime Library Exception, with the project's own license files retained), pinned dependencies, Node.js 22.23.3 (MIT and bundled dependency notices retained), and CocoaPods 1.16.2 (MIT and individual gem licenses retained). These tools live in the user's isolated WSL installation. Their binaries are not bundled in the Windows installer. Sources: https://github.com/swiftlang/swift-build, https://nodejs.org/ and https://github.com/CocoaPods/CocoaPods. The local Swift Build source contains a scoped LLVM libtool version-parser compatibility change. Native source modules and JavaScript dependencies remain the user's project's declared dependencies and licenses.
 
 Rano IDE desktop application and branding: freeware distribution with private application source. Independently licensed helper/component notices remain applicable.
 
@@ -22,16 +22,16 @@ The optional Flutter setup retrieves **Flutter 3.44.0** (BSD-3-Clause, https://g
 
 **Apple Xcode and SDKs** are proprietary and excluded from this project and all release bundles. Each user must obtain access independently under Apple's terms: https://www.apple.com/legal/sla/docs/xcode.pdf. Those terms restrict use to Apple-branded hardware; publishing this binary does not license Windows SDK use or redistribution.
 
-**PySide6 / Shiboken6 / Qt 6.10.3** are dynamically packaged under their applicable LGPLv3 / GPLv3 / commercial terms. This app uses Qt Core, GUI, Widgets, Network and WebEngine under LGPLv3; the libraries stay separate and replaceable in `_internal`. Qt WebEngine also includes Chromium and its third-party components under their respective licenses, including LGPLv2.1 components. Their attribution/license texts are included in `licenses/QtWebEngine-Chromium-notices.html`, collected from the official Qt 6.10.3 documentation. The release includes license texts and links to corresponding upstream source. Users may replace compatible Qt libraries and debug modifications to those libraries as allowed by the LGPL. The Rano IDE freeware notice does not limit those rights.
+**PySide6 / Shiboken6 / Qt 6.11.2** are dynamically packaged under their applicable LGPLv3 / GPLv3 / commercial terms. This app uses Qt Core, GUI, Widgets, Network and WebEngine under LGPLv3; the libraries stay separate and replaceable in `_internal`. Qt WebEngine also includes Chromium and its third-party components under their respective licenses, including LGPLv2.1 components. Their attribution/license texts are included in `licenses/QtWebEngine-Chromium-notices.html`, collected from the official Qt 6.11.2 documentation. The release includes license texts and links to corresponding upstream source. Users may replace compatible Qt libraries and debug modifications to those libraries as allowed by the LGPL. The Rano IDE freeware notice does not limit those rights.
 
-- PySide/Shiboken source: https://code.qt.io/cgit/pyside/pyside-setup.git/tag/?h=v6.10.3
-- Qt source: https://download.qt.io/archive/qt/6.10/6.10.3/submodules/
+- PySide/Shiboken source: https://code.qt.io/cgit/pyside/pyside-setup.git/tag/?h=v6.11.2
+- Qt source: https://download.qt.io/archive/qt/6.11/6.11.2/submodules/
 - Qt licensing: https://doc.qt.io/qt-6/lgpl.html
-- Qt WebEngine/Chromium licensing: https://doc.qt.io/qt-6.10/qtwebengine-licensing.html
+- Qt WebEngine/Chromium licensing: https://doc.qt.io/qt-6.11/qtwebengine-licensing.html
 
 **Appetize** is an optional externally hosted testing service, not a bundled emulator or an affiliation. Each developer supplies their own account under the provider's terms. This integration uses documented HTTPS APIs and the normal provider browser page; it does not bundle a proprietary Appetize SDK. API documentation: https://docs.appetize.io/rest-api
 
-**Python 3** runtime: Python Software Foundation license, included in the release. Source: https://www.python.org/downloads/source/
+**Python 3.13.16 / OpenSSL 3.5.9** runtime: Python Software Foundation license, included in the release. Source: https://www.python.org/downloads/source/
 
 **cryptography 50.0.1** supplies ES256 signing for Apple's App Store Connect API under Apache-2.0/BSD-3-Clause. Its bundled OpenSSL and Rust dependency notices are copied from the wheel's license directory. **cffi** uses the MIT license. These libraries are included in the desktop; private Apple keys are not. Source/license: https://github.com/pyca/cryptography/tree/50.0.1 and https://github.com/python-cffi/cffi.
 
