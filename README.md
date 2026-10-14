@@ -6,9 +6,9 @@
 
 Rano IDE brings project files, build commands, dependency setup, iPhone connections and App Store Connect delivery into one desktop application. Its supported build paths run locally on Windows through WSL; Rano IDE does not send your project to a build server operated by us.
 
-**Current release: 1.0.0 · Windows x64 · Free to download and use · Application source is private.**
+**Current release: 1.0.1 · Windows x64 · Free to download and use · Application source is private.**
 
-👉 **[Download Rano IDE 1.0.0](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.0/RanoIDESetup-1.0.0.exe)**
+👉 **[Download Rano IDE 1.0.1](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.1/RanoIDESetup-1.0.1.exe)**
 
 📦 **[All releases and downloads](https://github.com/hrano1000/Rano-IDE/releases)** · 🐛 **[Report a problem](https://github.com/hrano1000/Rano-IDE/issues)** · 📜 **[License](LICENSE)** · 🔐 **[Privacy and security](SECURITY.md)**
 
@@ -56,7 +56,7 @@ Rano IDE provides:
 
 Rano IDE is a practical development tool with experimental compiler integrations. It is not a complete replacement for every Xcode feature or every iOS project's build tools.
 
-| Project or artifact | What is available in 1.0.0 | What to know before using it |
+| Project or artifact | What is available in 1.0.1 | What to know before using it |
 | --- | --- | --- |
 | Flutter | Local Debug/Release iOS builds, release AOT compilation, IPA output, archives and supported iPhone Run workflows | Native plugins must be compatible with the local compiler or a supported adapter. Downloading a package alone cannot make an unsupported native implementation work. Profile builds are not supported. |
 | SwiftPM applications compatible with xtool | Local Swift application builds, Debug/Release configuration and existing signing/device workflows | An arbitrary Swift library package is not automatically an installable iOS application. The project needs an appropriate application configuration. |
@@ -64,6 +64,8 @@ Rano IDE is a practical development tool with experimental compiler integrations
 | React Native / Expo | **Experimental** JavaScript dependency installation, Expo native project generation, CocoaPods, code generation, native compilation and release bundling | A React Native 0.87.1 example with a programmatic launch configuration compiled locally. Its stock launch storyboard remains unsupported. Device execution and Apple acceptance of this new path are not yet verified. |
 | Existing App Store release IPA | Inspection, project association and the shared delivery workflow, regardless of its original framework | The IPA still needs valid distribution signing, matching metadata and Apple validation. Delivery support does not establish compilation support for its framework. |
 | Other folders/frameworks | File browsing and editing; recognized native containers can use the native path | No universal compiler support is inferred from opening a folder or entering a command. |
+
+Use **Check compatibility** beside the Workbench command editor or **Product → Check project compatibility** before a long build. The report reads project metadata and explains known requirements; it does not certify uninstalled dependencies. See the [Windows build and setup audit](docs/COMPATIBILITY.md) for the current evidence and remaining work.
 
 The general native pipeline currently stops on unsupported **storyboards, XIBs, Core Data models, Metal source, string catalogs, newer icon formats, some additional dependency/extension asset catalogs, and App Intents metadata extraction**. Native Xcode/React Native device **Run** is not enabled yet. Some specifically supported Flutter adapters handle their reviewed resources; that does not imply a general-purpose storyboard/XIB compiler.
 
@@ -83,11 +85,15 @@ You need:
 
 You do **not** need Python installed on Windows to run the EXE. The installer includes the Windows application's runtime. Compilers and development tools are installed/configured separately through **Environment → Automatic setup**.
 
+Automatic setup now checks executable health and SDK resources, detects a Swift/SDK mismatch, and repairs damaged cached Node/native-engine installations. Retry through the setup UI after an interrupted installation.
+
 Large projects and compiler setup can need substantial time, memory and storage. Existing compatible tools and cached downloads are reused where possible.
 
 ## 📥 Download and install
 
-1. Download **RanoIDESetup-1.0.0.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.0).
+The installer shows **Create a desktop shortcut**, checked by default. A Start menu shortcut is also created. Clear the desktop checkbox if you prefer to launch from the Start menu.
+
+1. Download **RanoIDESetup-1.0.1.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.1).
 2. Compare the download with the release's **SHA256SUMS.txt** if you want to verify its integrity. On Windows, the file's SHA-256 can be checked with a checksum utility or `Get-FileHash`.
 3. Open the EXE and choose **Install & open Rano IDE**.
 4. The application installs under your Windows user's local Programs directory and creates desktop/Start menu shortcuts.
@@ -293,7 +299,7 @@ Interrupted or uncertain submissions are **not automatically re-uploaded**. Chec
 
 ## 🔢 Versions and build numbers
 
-Rano IDE's **1.0.0** version is separate from your application's version.
+Rano IDE's **1.0.1** version is separate from your application's version.
 
 - Flutter normally gets app version/build from `pubspec.yaml` and supported build overrides.
 - Native Xcode projects use their selected configuration's marketing/build settings.
@@ -352,6 +358,6 @@ Rano IDE is **freeware with private application source**. Included/downloaded th
 
 Read [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [DEPENDENCY_SOURCE_ACCESS.md](DEPENDENCY_SOURCE_ACCESS.md). Apple SDKs, project sources, credentials, signing profiles and developer build caches are excluded from the published release assets.
 
-For 1.0.0, **543 automated checks passed**, with **27 environment-dependent/opt-in checks skipped**. The packaged application passed startup/browser, organizer, delivery diagnostics, cleanup, project isolation, history recovery and appearance/Workbench command checks. The installer passed an isolated installation/runtime check on the development Windows PC. **A completely clean Windows VM installation is not yet verified.** Experimental native/React Native builds have narrower verification than the established tested Flutter path.
+For 1.0.1, **559 automated checks passed**, with **27 environment-dependent/opt-in checks skipped**. The packaged application passed startup/browser, organizer, delivery diagnostics, cleanup, project isolation, history recovery and appearance/Workbench command checks. The installer passed an isolated installation/runtime check on the development Windows PC and a clean Windows Sandbox runtime check. **A completely clean Windows VM installation is not yet verified.** Experimental native/React Native builds have narrower verification than the established tested Flutter path.
 
 🧡 **Try it, keep your source and credentials private, and report reproducible problems so the tool can improve for everyone.** Rano IDE is independent and is not affiliated with or endorsed by Apple, Flutter, React Native, Qt or the underlying tool maintainers.
