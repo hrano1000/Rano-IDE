@@ -1,0 +1,22 @@
+# Only documentation, branding and notices belong in this public repository.
+*.exe
+*.zip
+*.p8
+*.p12
+*.pfx
+*.mobileprovision
+*.key
+appstore-profile.bin
+cloud-profile.bin
+settings.json
+.env
+.env.*
+build/
+dist/
+qa-output/
+xtool_desktop/
+tests/
+tools/
+*.py
+*.dart
+*.swift

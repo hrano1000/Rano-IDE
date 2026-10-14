@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="-7 -7 114 114">
+<defs><linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9D78EF"/><stop offset="1" stop-color="#5935B2"/></linearGradient></defs>
+<rect width="100" height="100" rx="22" fill="url(#brand)"/>
+<path fill="#fff" fill-rule="evenodd" d="M27 77V23H52C78 23 81 51 61 57L80 77H62L45 58H42V77Z M42 36V46H52C63 46 63 36 52 36Z"/>
+<rect x="16" y="23" width="5" height="54" rx="2" fill="#DCCAFF"/>
+</svg>

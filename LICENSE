@@ -1,0 +1,29 @@
+Rano IDE Freeware Distribution Notice
+
+Copyright (c) 2026 Rano Software. All rights reserved for the Rano IDE
+application except for the permissions expressly stated below.
+
+Rano IDE is provided free of charge for personal and commercial use.
+You may install and run the application and share unmodified copies of the
+official release installer with this notice and the accompanying dependency
+notices intact. The Rano IDE application's development source is not published
+or granted under an open-source license by this notice.
+
+Third-party software and any independently licensed components are excluded
+from the above reservation of rights. Their own licenses continue to apply,
+including permissions to obtain corresponding source, modify, replace,
+re-link, redistribute and debug modified libraries/components. Nothing in
+this notice restricts rights granted by those licenses, including LGPL,
+GPL, AGPL, MIT, BSD, Apache and the Python/Tcl/Tk licenses.
+
+The Rano IDE name and logo are not a license to imply endorsement of a
+modified or unofficial distribution.
+
+THE APPLICATION IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
+AND NON-INFRINGEMENT. TO THE EXTENT PERMITTED BY APPLICABLE LAW, THE
+COPYRIGHT HOLDERS ARE NOT LIABLE FOR CLAIMS, DAMAGES OR OTHER LIABILITY
+ARISING FROM THE APPLICATION OR ITS USE.
+
+See THIRD_PARTY_NOTICES.md, DEPENDENCY_SOURCE_ACCESS.md and licenses/ for
+third-party license texts, source directions and installation information.
