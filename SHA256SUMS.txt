@@ -1,0 +1,5 @@
+345a1efdbe18bc8f9b89e19ae1106a9e2a699152fd8c688667a563db95da68cc  RanoIDESetup-1.0.0.exe
+8b7b1af09e558e55db13fbb5abc7479a95512834d4eeedc7d4027b30698aa26f  RanoIDE-1.0.0-windows-x64.zip
+d215d4add7f73abbe4bd5073d8b58bf1ec60e6a9af080efb711d6cd98464092a  RanoIDE-1.0.0-backend-sources.zip
+8968303c603bd30a1ab418c7f5ae340e7846625760d162a8452097672f9e7158  RanoIDE-logo.png
+8a62683bf9e7a90cb0bddda705b59ba4e7fc15f12c5aecf97f3e6c41e192049f  RanoIDE-logo.svg
