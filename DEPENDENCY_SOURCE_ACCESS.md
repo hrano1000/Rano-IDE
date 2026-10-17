@@ -74,7 +74,7 @@ Relevant sources include:
 
 The independently licensed **AGPL xcross patch and offline signing adapter**
 ship with their source/license in the runtime bundle. A separate
-`RanoIDE-1.0.3-backend-sources.zip` release asset provides the corresponding
+`RanoIDE-1.0.4-backend-sources.zip` release asset provides the corresponding
 pinned xcross source, patch, adapter, AGPL license and reproduction directions.
 This dependency source asset does **not** publish Rano IDE's desktop GUI source.
 The patched backend's source is also retained beside its local WSL executable

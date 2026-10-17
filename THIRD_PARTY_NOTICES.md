@@ -40,3 +40,5 @@ The standalone Windows installer uses **Tcl/Tk** through Python's tkinter, under
 **PyInstaller** bootloader: GPLv2-or-later with an exception permitting distribution of generated bundles under the application's own license. License/exception: https://pyinstaller.org/en/stable/license.html
 
 The Windows release builder copies distribution license texts into `licenses/`. Please report missing notices as a packaging defect.
+
+**PyYAML 6.0.3** parses Flutter asset declarations using the safe YAML loader. It is bundled in the Windows application under the MIT license; its license is included with the packaged dependency notices. Source: https://github.com/yaml/pyyaml/tree/6.0.3.

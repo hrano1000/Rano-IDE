@@ -1,4 +1,4 @@
-# 🔎 Windows build and setup audit — Rano IDE 1.0.3
+# 🔎 Windows build and setup audit — Rano IDE 1.0.4
 
 Rano IDE can build supported iOS projects locally on Windows through WSL, without executing macOS. **It is not a universal replacement for every Xcode compiler, resource tool, simulator or test runner.** Framework detection, package installation, archive creation and Apple upload are different capabilities.
 
@@ -12,7 +12,7 @@ Rano IDE can build supported iOS projects locally on Windows through WSL, withou
 | React Native / Expo | Experimental Node/package-manager installation, native generation, CocoaPods/codegen and native release bundling. React Native 0.87.1 compiled with a separate QA programmatic launch configuration. The stock launch storyboard remains a blocker. Device execution and Apple acceptance of this path are unverified. |
 | Unity, .NET MAUI, Kotlin/Compose and other source frameworks | No verified end-to-end local adapter. An exported native project may have additional compiler/generation requirements. An existing compatible App Store IPA can be inspected and delivered irrespective of its original source framework. |
 
-## 🧩 Automatic native preparation in 1.0.3
+## 🧩 Automatic native preparation and asset staging in 1.0.4
 
 The shared Flutter build flow automatically prepares verified releases of `disk_space_plus` 0.2.6, `flutter_inappwebview_ios` 1.1.2, `flutter_local_notifications` 18.0.1, `flutter_secure_storage` 9.2.4 and `video_thumbnail` 0.5.6. No project-specific adapter list or manual settings change is needed. Upstream SwiftPM packages and existing reviewed adapters remain supported.
 
@@ -20,7 +20,9 @@ All five actual implementations compiled together for iOS ARM64 Release using Wi
 
 Source fingerprints are checked against the official published package contents. Changed/unknown source releases remain explicit support gaps. Unsupported lock selections stop with a native dependency diagnosis; the IDE does not silently pick another version. The webview adapter replaces its verified empty navigation storyboard with the same native navigation-controller class; its browser UI was already built programmatically by the plugin. This is a specific reviewed conversion, not a general storyboard compiler.
 
-See [the 1.0.3 verification report](AUDIT-1.0.3.md).
+Empty folders explicitly declared as Flutter asset directories are preserved; unused empty folders are skipped. Previously these folders disappeared from the build copy, causing Flutter to reject otherwise valid asset declarations. Missing directories in the original source are not manufactured.
+
+See [the 1.0.4 verification report](AUDIT-1.0.4.md).
 
 ## 🛠️ What 1.0.2 fixes generally
 
