@@ -1,4 +1,4 @@
-# 🔎 Windows build and setup audit — Rano IDE 1.0.4
+# 🔎 Windows build and setup audit — Rano IDE 1.0.5
 
 Rano IDE can build supported iOS projects locally on Windows through WSL, without executing macOS. **It is not a universal replacement for every Xcode compiler, resource tool, simulator or test runner.** Framework detection, package installation, archive creation and Apple upload are different capabilities.
 
@@ -11,6 +11,10 @@ Rano IDE can build supported iOS projects locally on Windows through WSL, withou
 | Native Swift / Objective-C / C++ | Experimental Xcode project/workspace import, native compilation, package resolution, configurations and archives. A SwiftUI example with a local Swift package was compiled and archived through the Windows UI. General native device Run and XCTest execution remain unimplemented. |
 | React Native / Expo | Experimental Node/package-manager installation, native generation, CocoaPods/codegen and native release bundling. React Native 0.87.1 compiled with a separate QA programmatic launch configuration. The stock launch storyboard remains a blocker. Device execution and Apple acceptance of this path are unverified. |
 | Unity, .NET MAUI, Kotlin/Compose and other source frameworks | No verified end-to-end local adapter. An exported native project may have additional compiler/generation requirements. An existing compatible App Store IPA can be inspected and delivered irrespective of its original source framework. |
+
+## 📦 Automatic release symbols in 1.0.5
+
+Deep Windows symbol paths are supported during archive validation. The shared collector matches the exact IPA/app, snapshots genuine matching dSYMs, regenerates recoverable symbols and reports unavailable debug information. [Read the symbol verification report](AUDIT-1.0.5.md).
 
 ## 🧩 Automatic native preparation and asset staging in 1.0.4
 
