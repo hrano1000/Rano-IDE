@@ -1,0 +1,57 @@
+{
+  "version": "1.0.4",
+  "files": [
+    {
+      "name": "RanoIDESetup-1.0.4.exe",
+      "size": 198148876,
+      "sha256": "a9843f2719b4e5187b32978f85fbc58a3c55996f5172b4e234ff4a73a319fc26",
+      "parts": [
+        "payload-00-000.part",
+        "payload-00-001.part",
+        "payload-00-002.part",
+        "payload-00-003.part",
+        "payload-00-004.part",
+        "payload-00-005.part"
+      ]
+    },
+    {
+      "name": "RanoIDE-1.0.4-windows-x64.zip",
+      "size": 187657817,
+      "sha256": "dd29a0fd2107837cfdac25dec5252ab7c3ae8415cccb4b16f499c3e8f916137e",
+      "parts": [],
+      "from_installer": "RanoIDESetup-1.0.4.exe"
+    },
+    {
+      "name": "RanoIDE-1.0.4-backend-sources.zip",
+      "size": 2279445,
+      "sha256": "7399af569df3720278db8ed80b1624ac8d44e715f3310f62235562dd51603d68",
+      "parts": [
+        "payload-02-000.part"
+      ]
+    },
+    {
+      "name": "RanoIDE-logo.png",
+      "size": 61584,
+      "sha256": "8968303c603bd30a1ab418c7f5ae340e7846625760d162a8452097672f9e7158",
+      "parts": [
+        "payload-03-000.part"
+      ]
+    },
+    {
+      "name": "RanoIDE-logo.svg",
+      "size": 511,
+      "sha256": "8a62683bf9e7a90cb0bddda705b59ba4e7fc15f12c5aecf97f3e6c41e192049f",
+      "parts": [
+        "payload-04-000.part"
+      ]
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "size": 456,
+      "sha256": "cb5e841eda07ee49af1a29ac833c86d4bdf597ce35ff2fcfcf250c27cfcc5e8f",
+      "parts": [
+        "payload-05-000.part"
+      ]
+    }
+  ]
+}

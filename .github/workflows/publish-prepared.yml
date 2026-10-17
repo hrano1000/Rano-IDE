@@ -1,0 +1,85 @@
+name: Publish verified Windows binaries
+on:
+  push:
+    branches: ['prepared-release/**']
+    paths: ['prepared-assets/manifest.json']
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Prepare the release archive reader
+        shell: bash
+        run: |
+          python3 -m venv "$RUNNER_TEMP/release-reader"
+          "$RUNNER_TEMP/release-reader/bin/python" -m pip install --disable-pip-version-check PyInstaller==6.19.0
+      - name: Reassemble and verify the already audited files
+        id: files
+        shell: bash
+        run: |
+          "$RUNNER_TEMP/release-reader/bin/python" - <<'PY'
+          import hashlib, json, os, pathlib, re
+          from PyInstaller.archive.readers import CArchiveReader
+          manifest = json.loads(pathlib.Path('prepared-assets/manifest.json').read_text())
+          version = manifest['version']
+          assert re.fullmatch(r'\d+\.\d+\.\d+', version)
+          expected = {f'RanoIDESetup-{version}.exe', f'RanoIDE-{version}-windows-x64.zip', f'RanoIDE-{version}-backend-sources.zip', 'RanoIDE-logo.png', 'RanoIDE-logo.svg', 'SHA256SUMS.txt'}
+          assert {row['name'] for row in manifest['files']} == expected
+          output = pathlib.Path('verified-assets'); output.mkdir()
+          for row in manifest['files']:
+              if row.get('from_installer'): continue
+              target = output/row['name']
+              digest = hashlib.sha256()
+              with target.open('xb') as stream:
+                  for part in row['parts']:
+                      assert re.fullmatch(r'payload-\d{2}-\d{3}\.part', part)
+                      with (pathlib.Path('prepared-assets')/part).open('rb') as incoming:
+                          while chunk := incoming.read(1024*1024):
+                              stream.write(chunk); digest.update(chunk)
+              assert target.stat().st_size == row['size'], row['name']
+              assert digest.hexdigest() == row['sha256'], row['name']
+          for row in manifest['files']:
+              if not row.get('from_installer'): continue
+              assert row['name'] == f'RanoIDE-{version}-windows-x64.zip'
+              assert row['from_installer'] == f'RanoIDESetup-{version}.exe'
+              archive = CArchiveReader(str(output/row['from_installer']))
+              entries = [key for key in archive.toc if pathlib.Path(key).name == row['name']]
+              assert len(entries) == 1
+              data = archive.extract(entries[0])
+              assert len(data) == row['size'] and hashlib.sha256(data).hexdigest() == row['sha256']
+              (output/row['name']).write_bytes(data)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as stream:
+              stream.write(f'tag=v{version}\nversion={version}\n')
+          print('All six release files match their audited sizes and SHA-256 hashes.')
+          PY
+      - name: Upload verified binaries and publish the release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.files.outputs.tag }}
+          VERSION: ${{ steps.files.outputs.version }}
+        run: |
+          set -euo pipefail
+          gh release create "$TAG" verified-assets/* --repo "$GITHUB_REPOSITORY" --verify-tag --draft --title "Rano IDE $VERSION" --notes-file RELEASE_NOTES.md
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$TAG" > uploaded-release.json
+          python3 - <<'PY'
+          import json, pathlib
+          manifest = json.loads(pathlib.Path('prepared-assets/manifest.json').read_text())
+          release = json.loads(pathlib.Path('uploaded-release.json').read_text())
+          expected = {row['name']:row for row in manifest['files']}
+          assert release['draft'] is True
+          assert {row['name'] for row in release['assets']} == set(expected)
+          for asset in release['assets']:
+              row = expected[asset['name']]
+              assert asset['state'] == 'uploaded' and asset['size'] == row['size']
+              assert asset['digest'] == 'sha256:'+row['sha256']
+          print('GitHub confirmed all six uploaded asset digests; publishing.')
+          PY
+          gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --draft=false --latest
