@@ -6,20 +6,20 @@
 
 Rano IDE brings project files, build commands, dependency setup, iPhone connections and App Store Connect delivery into one desktop application. Its supported build paths run locally on Windows through WSL; Rano IDE does not send your project to a build server operated by us.
 
-**Current release: 1.0.16 · Windows x64 · Free to download and use · Application source is private.**
+**Current release: 1.0.17 · Windows x64 · Free to download and use · Application source is private.**
 
-👉 **[Download Rano IDE 1.0.16](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.16/RanoIDESetup-1.0.16.exe)**
+👉 **[Download Rano IDE 1.0.17](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.17/RanoIDESetup-1.0.17.exe)**
 
 📦 **[All releases and downloads](https://github.com/hrano1000/Rano-IDE/releases)** · 🐛 **[Report a problem](https://github.com/hrano1000/Rano-IDE/issues)** · 📜 **[License](LICENSE)** · 🔐 **[Privacy and security](SECURITY.md)**
 
 This public repository contains the downloads, user documentation, branding and dependency notices. It does not publish the Rano IDE desktop application's development source. GitHub's automatically generated repository ZIP contains these documents; choose the **EXE installer** to install the application.
 
-## 🆕 What's new in 1.0.16
+## 🆕 What's new in 1.0.17
 
-- 🎯 **Run App ID** is visible in Workbench below Application target for Flutter device testing.
-- ✅ **Project bundle ID (default)** uses the exact project identity, even if a previous run selected a prefixed development ID.
-- 🔀 **Team-prefixed development ID** remains available as an explicit, project-specific choice.
-- 🛡️ An offline profile for another identity cannot silently replace the selected app. App Store distribution is unchanged.
+- 🛠️ Flutter device **Run** now executes the selected custom build command instead of using a default build.
+- ⚙️ Shell variables, Dart defines, entrypoint, flavor, version and Debug/Release selection reach the compiled app.
+- 📱 Run installs and launches that exact completed custom build, with no second default compilation.
+- 🛡️ Failed scripts, missing outputs, multiple apps and a different project stop before installation. The existing Run App ID and App Store workflows are preserved.
 
 
 ## 🧭 Contents
@@ -66,7 +66,7 @@ Rano IDE provides:
 
 Rano IDE is a practical development tool with experimental compiler integrations. It is not a complete replacement for every Xcode feature or every iOS project's build tools.
 
-| Project or artifact | What is available in 1.0.16 | What to know before using it |
+| Project or artifact | What is available in 1.0.17 | What to know before using it |
 | --- | --- | --- |
 | Flutter | Local Debug/Release iOS builds, release AOT compilation, IPA output, archives and supported iPhone Run workflows | Native plugins must be compatible with the local compiler or a supported adapter. Downloading a package alone cannot make an unsupported native implementation work. Profile builds are not supported. |
 | SwiftPM applications compatible with xtool | Local Swift application builds, Debug/Release configuration and existing signing/device workflows | An arbitrary Swift library package is not automatically an installable iOS application. The project needs an appropriate application configuration. |
@@ -105,7 +105,7 @@ Large projects and compiler setup can need substantial time, memory and storage.
 
 The installer shows **Create a desktop shortcut**, checked by default. A Start menu shortcut is also created. Clear the desktop checkbox if you prefer to launch from the Start menu.
 
-1. Download **RanoIDESetup-1.0.16.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.16).
+1. Download **RanoIDESetup-1.0.17.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.17).
 2. Compare the download with the release's **SHA256SUMS.txt** if you want to verify its integrity. On Windows, the file's SHA-256 can be checked with a checksum utility or `Get-FileHash`.
 3. Open the EXE and choose **Install & open Rano IDE**.
 4. The application installs under your Windows user's local Programs directory and creates desktop/Start menu shortcuts.
@@ -170,8 +170,12 @@ The **Build command** editor is visible above the source editor in Workbench.
 1. Open the intended project.
 2. Paste your complete command or multiline script.
 3. The editor selects **Use my build command** when text is entered.
-4. Choose **Save command** to retain it, or **Build project** to save and run it.
+4. Choose **Save command** to retain it. **Build project** and Flutter device **Run** also save the current command before executing it.
 5. To return to the default, choose **Use the default build**. A blank command uses the default build.
+
+For Flutter device **Run**, the complete script must succeed and produce exactly one iOS app for the selected project. The IDE then signs, installs and launches that completed app using the Workbench device and Run App ID. It does not perform a second default build. Script commands after compilation run before installation. The command's Debug/Release choice controls the launched app even when it differs from the inspector's default. Missing, failed, stale or ambiguous outputs stop Run; an older app is not substituted.
+
+Supported `flutter build ios` / `flutter build ipa` commands work for device Run. A custom `flutter run` command can also supply the supported build options. Select the device in Workbench; unsupported device or compiler flags produce a diagnosis. Custom cloud simulator commands remain unsupported and do not fall back silently.
 
 Commands are saved **per project**, not globally. They run in **Bash in the local WSL environment**, in a separate build copy. They are not PowerShell scripts. Windows-only commands need an appropriate tool or adaptation. User scripts have normal access as the configured WSL user; a build copy is not a security sandbox.
 
@@ -364,7 +368,7 @@ Interrupted or uncertain submissions are **not automatically re-uploaded**. Chec
 
 ## 🔢 Versions and build numbers
 
-Rano IDE's **1.0.16** version is separate from your application's version.
+Rano IDE's **1.0.17** version is separate from your application's version.
 
 - Flutter normally gets app version/build from `pubspec.yaml` and supported build overrides.
 - Native Xcode projects use their selected configuration's marketing/build settings.
@@ -425,6 +429,6 @@ Rano IDE is **freeware with private application source**. Included/downloaded th
 
 Read [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [DEPENDENCY_SOURCE_ACCESS.md](DEPENDENCY_SOURCE_ACCESS.md). Apple SDKs, project sources, credentials, signing profiles and developer build caches are excluded from the published release assets.
 
-Read the [full 1.0.16 audit](docs/AUDIT-1.0.16.md) for findings, verification and remaining limits.
+Read the [full 1.0.17 audit](docs/AUDIT-1.0.17.md) for findings, verification and remaining limits.
 
 For 1.0.14, the shared bundle generator writes standard Xcode product identity fields from the matching verified SDK import before signing. This corrects the omission left in 1.0.13's report-only metadata change. The actual Linux compiler and host remain separately recorded; no macOS host or stable build identifier is invented. **Check before upload** and the UI delivery guard reject missing, testing, conflicting and known unaccepted beta identities before transfer. **Release IPAs → Export details…** exposes the generated fields. Existing IPAs are unchanged; create a new archive to use the fix. Local verification does not establish Apple App Review acceptance of a new build. Transfer/signing and asset compilation implementations remain unchanged. The earlier WSL recovery protections and documented project/setup limitations remain applicable.
