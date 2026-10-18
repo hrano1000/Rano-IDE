@@ -14,6 +14,15 @@ Rano IDE brings project files, build commands, dependency setup, iPhone connecti
 
 This public repository contains the downloads, user documentation, branding and dependency notices. It does not publish the Rano IDE desktop application's development source. GitHub's automatically generated repository ZIP contains these documents; choose the **EXE installer** to install the application.
 
+## 🆕 What's new in 1.0.14
+
+- 🛠️ New archives receive standard Xcode product metadata from the verified Apple SDK import before signing. The fix is shared by supported project build paths and their app extensions.
+- 🔎 **Check before upload** catches missing or inconsistent product metadata and known unaccepted beta identities before a transfer starts.
+- 📋 **Release IPAs → Export details…** shows the generated product fields alongside the actual compiler information.
+- 🛡️ The established upload, signing and asset compilation implementations are retained. Create a fresh archive to use the fix; previously uploaded builds remain unchanged.
+
+The installed application passed packaged UI and installer checks. Project compatibility and setup limits are described below; local checks do not guarantee Apple's acceptance of every project.
+
 ## 🧭 Contents
 
 - [What Rano IDE does](#-what-rano-ide-does)
