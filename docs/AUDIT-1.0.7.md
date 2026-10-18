@@ -1,5 +1,7 @@
 # 🔄 Rano IDE 1.0.7 — startup updates, browser downloads and SDK import guidance
 
+> **Correction in 1.0.9:** The earlier archive diagnosis used Xcode.app’s compiler build instead of its product build. A genuine stable archive can contain a differing DTXcodeBuild. See the [product-identity fix](AUDIT-1.0.9.md). The previous reader’s mismatch was not proof that the downloaded product was an RC.
+
 ## 📥 Download outside the app
 
 Apple SDK releases now includes **Open Apple downloads in your browser**. It opens the official Apple download search for the currently selected release in the default browser. Users sign in and download the full Xcode .xip there, then return to **Import downloaded Xcode**. The existing embedded download and import options remain available. If browser opening fails, a selectable official URL appears for copying. Release titles are URL encoded; no signed download URL or credentials are supplied to the browser action.

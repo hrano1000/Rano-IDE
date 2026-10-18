@@ -1,5 +1,7 @@
 # 🧰 Rano IDE 1.0.6 — Apple SDK releases and imports
 
+> **Correction in 1.0.9:** The earlier archive diagnosis used Xcode.app’s compiler build instead of its product build. A genuine stable archive can contain a differing DTXcodeBuild. See the [product-identity fix](AUDIT-1.0.9.md). The previous reader’s mismatch was not proof that the downloaded product was an RC.
+
 ## 📥 What changed
 
 Environment → Apple SDK releases and Dependencies → Update iOS SDK open a shared, project-independent release manager. It reads Apple’s official release RSS and App Store Connect acceptance notes. It prefers the latest stable release explicitly named for App Store submissions, labels prereleases, and does not infer eligibility from the SDK version alone. Checks reuse a dated cache for one day; Check releases forces refresh. Offline users can import a downloaded archive.
