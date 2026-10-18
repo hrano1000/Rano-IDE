@@ -6,9 +6,9 @@
 
 Rano IDE brings project files, build commands, dependency setup, iPhone connections and App Store Connect delivery into one desktop application. Its supported build paths run locally on Windows through WSL; Rano IDE does not send your project to a build server operated by us.
 
-**Current release: 1.0.7 · Windows x64 · Free to download and use · Application source is private.**
+**Current release: 1.0.8 · Windows x64 · Free to download and use · Application source is private.**
 
-👉 **[Download Rano IDE 1.0.7](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.7/RanoIDESetup-1.0.7.exe)**
+👉 **[Download Rano IDE 1.0.8](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.8/RanoIDESetup-1.0.8.exe)**
 
 📦 **[All releases and downloads](https://github.com/hrano1000/Rano-IDE/releases)** · 🐛 **[Report a problem](https://github.com/hrano1000/Rano-IDE/issues)** · 📜 **[License](LICENSE)** · 🔐 **[Privacy and security](SECURITY.md)**
 
@@ -58,7 +58,7 @@ Rano IDE provides:
 
 Rano IDE is a practical development tool with experimental compiler integrations. It is not a complete replacement for every Xcode feature or every iOS project's build tools.
 
-| Project or artifact | What is available in 1.0.7 | What to know before using it |
+| Project or artifact | What is available in 1.0.8 | What to know before using it |
 | --- | --- | --- |
 | Flutter | Local Debug/Release iOS builds, release AOT compilation, IPA output, archives and supported iPhone Run workflows | Native plugins must be compatible with the local compiler or a supported adapter. Downloading a package alone cannot make an unsupported native implementation work. Profile builds are not supported. |
 | SwiftPM applications compatible with xtool | Local Swift application builds, Debug/Release configuration and existing signing/device workflows | An arbitrary Swift library package is not automatically an installable iOS application. The project needs an appropriate application configuration. |
@@ -95,7 +95,7 @@ Large projects and compiler setup can need substantial time, memory and storage.
 
 The installer shows **Create a desktop shortcut**, checked by default. A Start menu shortcut is also created. Clear the desktop checkbox if you prefer to launch from the Start menu.
 
-1. Download **RanoIDESetup-1.0.7.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.7).
+1. Download **RanoIDESetup-1.0.8.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.8).
 2. Compare the download with the release's **SHA256SUMS.txt** if you want to verify its integrity. On Windows, the file's SHA-256 can be checked with a checksum utility or `Get-FileHash`.
 3. Open the EXE and choose **Install & open Rano IDE**.
 4. The application installs under your Windows user's local Programs directory and creates desktop/Start menu shortcuts.
@@ -108,6 +108,8 @@ The portable ZIP is optional. Extract the complete archive and open **RanoIDE.ex
 Reopening an identical installer can reuse the matching installation. Before replacing an installation that is running, save your work and close that copy. A failed/locked installation should preserve the previous installation.
 
 ## 🔄 Updates when you open Rano IDE
+
+The **Apple SDK releases** page separates **Current SDK**, **Latest stable release**, and the update status. **Up to date** requires matching recorded Xcode source identities for both build tools. Older installations without a recorded source still show their real iOS SDK version/build, with a verification notice. Offline checks show saved release information rather than claiming it is current. The installed versions are read again after import or rollback; selecting a download never changes the installed version.
 
 Each normal launch checks both the official stable **Rano IDE release** on GitHub and **Apple Xcode/SDK releases**. The check runs once per application session; opening another project window does not repeat it. If an update is available or the installed SDK source needs verification, an update prompt appears before continuing. **Continue** lets you defer; offline or unavailable checks remain clearly labelled and do not permanently lock you out.
 
@@ -348,7 +350,7 @@ Interrupted or uncertain submissions are **not automatically re-uploaded**. Chec
 
 ## 🔢 Versions and build numbers
 
-Rano IDE's **1.0.7** version is separate from your application's version.
+Rano IDE's **1.0.8** version is separate from your application's version.
 
 - Flutter normally gets app version/build from `pubspec.yaml` and supported build overrides.
 - Native Xcode projects use their selected configuration's marketing/build settings.
@@ -408,8 +410,8 @@ Rano IDE is **freeware with private application source**. Included/downloaded th
 
 Read [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [DEPENDENCY_SOURCE_ACCESS.md](DEPENDENCY_SOURCE_ACCESS.md). Apple SDKs, project sources, credentials, signing profiles and developer build caches are excluded from the published release assets.
 
-Read the [full 1.0.7 audit](docs/AUDIT-1.0.7.md) for findings, verification and remaining limits.
+Read the [full 1.0.8 audit](docs/AUDIT-1.0.8.md) for findings, verification and remaining limits.
 
-For 1.0.7, **693 automated tests passed**, with **27 environment-dependent/opt-in tests skipped**. This update adds the external Apple download link, clear release-mismatch messages, and startup checks for both IDE and SDK releases. SDK update regressions cover external download URL selection and browser-opening failure, structured mismatch messages without traceback, and release/channel selection, exact App Store acceptance matching, cache/offline behavior, corrupt or incomplete XIP files, wrong source builds, replacement of already installed SDKs, rollback and interrupted import recovery. The existing multi-project, asset, upload and release-symbol checks remain included. The complete existing RC archive was read successfully and identified from its root metadata; live official release and acceptance information was fetched. Packaged UI checks cover light/dark/narrow layouts, help and import error/retry states. An authenticated download and full final-release SDK replacement need a genuine matching Apple download and user interaction; no Apple app upload is part of this desktop update. **A completely clean Windows VM installation with the full toolchain remains unverified.** Native/React Native support retains the limits described above.
+For 1.0.8, the automated regression suite and packaged UI checks cover installed/latest SDK status, matching and differing Xcode builds, unknown source, missing tools, offline checks, selection isolation and refresh after import or rollback. Previous update, signing, upload, asset and symbol checks remain included. The Apple upload/signing/asset/archive implementations are unchanged. This update does not replace the installed SDK or upload an app. **A completely clean Windows VM installation with the full toolchain remains unverified.** Native/React Native support retains the limits described above.
 
 🧡 **Try it, keep your source and credentials private, and report reproducible problems so the tool can improve for everyone.** Rano IDE is independent and is not affiliated with or endorsed by Apple, Flutter, React Native, Qt or the underlying tool maintainers.
