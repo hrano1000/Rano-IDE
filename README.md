@@ -6,9 +6,9 @@
 
 Rano IDE brings project files, build commands, dependency setup, iPhone connections and App Store Connect delivery into one desktop application. Its supported build paths run locally on Windows through WSL; Rano IDE does not send your project to a build server operated by us.
 
-**Current release: 1.0.11 · Windows x64 · Free to download and use · Application source is private.**
+**Current release: 1.0.12 · Windows x64 · Free to download and use · Application source is private.**
 
-👉 **[Download Rano IDE 1.0.11](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.11/RanoIDESetup-1.0.11.exe)**
+👉 **[Download Rano IDE 1.0.12](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.12/RanoIDESetup-1.0.12.exe)**
 
 📦 **[All releases and downloads](https://github.com/hrano1000/Rano-IDE/releases)** · 🐛 **[Report a problem](https://github.com/hrano1000/Rano-IDE/issues)** · 📜 **[License](LICENSE)** · 🔐 **[Privacy and security](SECURITY.md)**
 
@@ -58,7 +58,7 @@ Rano IDE provides:
 
 Rano IDE is a practical development tool with experimental compiler integrations. It is not a complete replacement for every Xcode feature or every iOS project's build tools.
 
-| Project or artifact | What is available in 1.0.11 | What to know before using it |
+| Project or artifact | What is available in 1.0.12 | What to know before using it |
 | --- | --- | --- |
 | Flutter | Local Debug/Release iOS builds, release AOT compilation, IPA output, archives and supported iPhone Run workflows | Native plugins must be compatible with the local compiler or a supported adapter. Downloading a package alone cannot make an unsupported native implementation work. Profile builds are not supported. |
 | SwiftPM applications compatible with xtool | Local Swift application builds, Debug/Release configuration and existing signing/device workflows | An arbitrary Swift library package is not automatically an installable iOS application. The project needs an appropriate application configuration. |
@@ -89,13 +89,15 @@ You do **not** need Python installed on Windows to run the EXE. The installer in
 
 Automatic setup checks executable health and SDK resources, detects a Swift/SDK mismatch, and repairs damaged cached Node/native-engine installations. Temporary WSL startup failures are retried before deciding tools are missing. If an existing environment cannot be checked, setup stops instead of creating another copy. A build can rediscover and reuse an installed Flutter environment before offering setup. Retry through the setup UI after an interrupted installation.
 
+**Environment → WSL health…** verifies the selected existing environment and offers **Reconnect and check** without restarting WSL or reinstalling compilers. Rano IDE retains its own Linux connection while open and verifies the filesystem identity before build/setup commands. An unreadable environment is reported as a connection failure rather than a missing SDK; it does not silently switch to another registered distribution or create a replacement. **Update WSL…** offers the pinned official Microsoft engine supported by this IDE release, checks the download hash and uses normal administrator approval. Save Linux work first: the Microsoft installer may interrupt Linux sessions or require a Windows restart. Newer WSL versions are retained. Automatic setup also links to WSL health.
+
 Large projects and compiler setup can need substantial time, memory and storage. Existing compatible tools and cached downloads are reused where possible.
 
 ## 📥 Download and install
 
 The installer shows **Create a desktop shortcut**, checked by default. A Start menu shortcut is also created. Clear the desktop checkbox if you prefer to launch from the Start menu.
 
-1. Download **RanoIDESetup-1.0.11.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.11).
+1. Download **RanoIDESetup-1.0.12.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.12).
 2. Compare the download with the release's **SHA256SUMS.txt** if you want to verify its integrity. On Windows, the file's SHA-256 can be checked with a checksum utility or `Get-FileHash`.
 3. Open the EXE and choose **Install & open Rano IDE**.
 4. The application installs under your Windows user's local Programs directory and creates desktop/Start menu shortcuts.
@@ -350,7 +352,7 @@ Interrupted or uncertain submissions are **not automatically re-uploaded**. Chec
 
 ## 🔢 Versions and build numbers
 
-Rano IDE's **1.0.11** version is separate from your application's version.
+Rano IDE's **1.0.12** version is separate from your application's version.
 
 - Flutter normally gets app version/build from `pubspec.yaml` and supported build overrides.
 - Native Xcode projects use their selected configuration's marketing/build settings.
@@ -381,6 +383,7 @@ Protected credentials are tied to the Windows user account. Copying an encrypted
 
 | What you see | What to check |
 | --- | --- |
+| WSL connection needs attention | Open **Environment → WSL health… → Reconnect and check**. Installed SDKs, tools and projects are retained. Review **Update WSL…** if offered. |
 | Missing WSL/toolchain/SDK | Open **Environment → Automatic setup**, check/install missing tools and import the SDK. Follow restart/admin prompts yourself. |
 | First setup or dependency stage takes a long time | Read the current phase/output. First-time source compiler builds and package downloads can be slow; later runs reuse caches. Do not start another concurrent build to guess whether the first is active. |
 | Package/plugin not supported | Check the named package/version and native implementation. A compatible package/adapter may be needed; `pub get` alone cannot supply a missing native compiler feature. |
@@ -410,8 +413,8 @@ Rano IDE is **freeware with private application source**. Included/downloaded th
 
 Read [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [DEPENDENCY_SOURCE_ACCESS.md](DEPENDENCY_SOURCE_ACCESS.md). Apple SDKs, project sources, credentials, signing profiles and developer build caches are excluded from the published release assets.
 
-Read the [full 1.0.11 audit](docs/AUDIT-1.0.11.md) for findings, verification and remaining limits.
+Read the [full 1.0.12 audit](docs/AUDIT-1.0.12.md) for findings, verification and remaining limits.
 
-For 1.0.11, regression checks cover genuine Xcode product identity, differing compiler/product builds, missing or corrupt product records, duplicate or mixed application metadata, full-archive validation, exact release matching before replacement, SDK directory aliases and unsafe-link rollback, legacy-source verification and current/latest UI status. The established Apple upload, signing, asset compiler and archive implementations are unchanged. SDK imports still require genuine Apple downloads and compatible local compilers. A complete clean Windows VM toolchain installation and universal native/React Native support remain unverified.
+For 1.0.12, regression checks cover retained WSL sessions, Linux identity checks before command execution, changed-root refusal, failed connection recovery, selected-environment preservation, safe Windows engine updates and the health UI. Repeated real idle/concurrent checks passed without WSL restarts or tool reinstallations. The earlier intermittent wrong-root symptom did not recur in baseline checks; its upstream root cause is not established. The established Apple upload, signing, asset compiler and archive implementations are unchanged. SDK imports still require genuine Apple downloads and compatible local compilers. A complete clean Windows VM toolchain installation and universal native/React Native support remain unverified.
 
 🧡 **Try it, keep your source and credentials private, and report reproducible problems so the tool can improve for everyone.** Rano IDE is independent and is not affiliated with or endorsed by Apple, Flutter, React Native, Qt or the underlying tool maintainers.
