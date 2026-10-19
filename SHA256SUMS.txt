@@ -1,5 +1,5 @@
-80fff4deb7938a67fed309009cd93558a85a1fe1a575edd52d0f0b589de9cb49  RanoIDESetup-1.0.20.exe
-fcf830b04af7a7ea70ecccd1025313e2e5413709cbcff7bbf8da52f3124311cc  RanoIDE-1.0.20-windows-x64.zip
-3fb43e34327ed2f23d1ba791f1599ff2829cd068a8b753e78928403c7d8b38d6  RanoIDE-1.0.20-backend-sources.zip
+0707811b826676e0b214ccf80c52bec63bb676025ea6a5a6c53d1e139c2eb04d  RanoIDESetup-1.0.21.exe
+847bf3745aa3cbbbc3628d734da96ec61fb0a1bab1b7beaa1a210465202160f7  RanoIDE-1.0.21-windows-x64.zip
+d182382f0d7204d54ad9d619fed98b847f4ad0ac020f1ece28bfdad3d1cef6a8  RanoIDE-1.0.21-backend-sources.zip
 8968303c603bd30a1ab418c7f5ae340e7846625760d162a8452097672f9e7158  RanoIDE-logo.png
 8a62683bf9e7a90cb0bddda705b59ba4e7fc15f12c5aecf97f3e6c41e192049f  RanoIDE-logo.svg
