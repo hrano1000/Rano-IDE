@@ -6,15 +6,15 @@
 
 Rano IDE brings project files, build commands, dependency setup, iPhone connections and App Store Connect delivery into one desktop application. Its supported build paths run locally on Windows through WSL; Rano IDE does not send your project to a build server operated by us.
 
-**Current release: 1.0.18 · Windows x64 · Free to download and use · Application source is private.**
+**Current release: 1.0.19 · Windows x64 · Free to download and use · Application source is private.**
 
-👉 **[Download Rano IDE 1.0.18](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.18/RanoIDESetup-1.0.18.exe)**
+👉 **[Download Rano IDE 1.0.19](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.19/RanoIDESetup-1.0.19.exe)**
 
 📦 **[All releases and downloads](https://github.com/hrano1000/Rano-IDE/releases)** · 🐛 **[Report a problem](https://github.com/hrano1000/Rano-IDE/issues)** · 📜 **[License](LICENSE)** · 🔐 **[Privacy and security](SECURITY.md)**
 
 This public repository contains the downloads, user documentation, branding and dependency notices. It does not publish the Rano IDE desktop application's development source. GitHub's automatically generated repository ZIP contains these documents; choose the **EXE installer** to install the application.
 
-## 🆕 What's new in 1.0.18
+## 🆕 What's new in 1.0.19
 
 - 🛠️ Flutter device **Run** now executes the selected custom build command instead of using a default build.
 - ⚙️ Shell variables, Dart defines, entrypoint, flavor, version and Debug/Release selection reach the compiled app.
@@ -66,7 +66,7 @@ Rano IDE provides:
 
 Rano IDE is a practical development tool with experimental compiler integrations. It is not a complete replacement for every Xcode feature or every iOS project's build tools.
 
-| Project or artifact | What is available in 1.0.18 | What to know before using it |
+| Project or artifact | What is available in 1.0.19 | What to know before using it |
 | --- | --- | --- |
 | Flutter | Local Debug/Release iOS builds, release AOT compilation, IPA output, archives and supported iPhone Run workflows | Native plugins must be compatible with the local compiler or a supported adapter. Downloading a package alone cannot make an unsupported native implementation work. Profile builds are not supported. |
 | SwiftPM applications compatible with xtool | Local Swift application builds, Debug/Release configuration and existing signing/device workflows | An arbitrary Swift library package is not automatically an installable iOS application. The project needs an appropriate application configuration. |
@@ -105,7 +105,7 @@ Large projects and compiler setup can need substantial time, memory and storage.
 
 The installer shows **Create a desktop shortcut**, checked by default. A Start menu shortcut is also created. Clear the desktop checkbox if you prefer to launch from the Start menu.
 
-1. Download **RanoIDESetup-1.0.18.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.18).
+1. Download **RanoIDESetup-1.0.19.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.19).
 2. Compare the download with the release's **SHA256SUMS.txt** if you want to verify its integrity. On Windows, the file's SHA-256 can be checked with a checksum utility or `Get-FileHash`.
 3. Open the EXE and choose **Install & open Rano IDE**.
 4. The application installs under your Windows user's local Programs directory and creates desktop/Start menu shortcuts.
@@ -165,7 +165,7 @@ For Flutter device testing, choose **Run App ID** beneath Application target. **
 
 ### 🔐 Development capabilities
 
-The project declares its required capabilities; the IDE checks Apple’s enabled capabilities and the actual provisioning-profile grants before device installation. A rejected capability request stops Run instead of silently installing an app without Apple sign-in, push or another declared capability. Existing cached profiles must also cover the required permissions.
+The project declares its required capabilities; the IDE checks Apple’s enabled capabilities and the actual provisioning-profile grants before device installation. Apple ID provisioning uses the capability relationship required by Developer Services; API-key provisioning retains the public App Store Connect request format. A rejected capability request stops Run instead of silently installing an app without Apple sign-in, push or another declared capability. Existing cached profiles must also cover the required permissions.
 
 If Apple rejects automatic setup, open **Apple Developer → Certificates, Identifiers & Profiles → Identifiers**, select the exact project bundle ID, enable the required capability and save. **Sign in with Apple** also needs a primary App ID or an appropriate existing primary App ID grouping. Run again online to obtain a fresh profile. **Declared** in Project settings describes source configuration; it does not confirm Apple has enabled it. The IDE does not override existing Apple sign-in groupings.
 
@@ -374,7 +374,7 @@ Interrupted or uncertain submissions are **not automatically re-uploaded**. Chec
 
 ## 🔢 Versions and build numbers
 
-Rano IDE's **1.0.18** version is separate from your application's version.
+Rano IDE's **1.0.19** version is separate from your application's version.
 
 - Flutter normally gets app version/build from `pubspec.yaml` and supported build overrides.
 - Native Xcode projects use their selected configuration's marketing/build settings.
@@ -435,6 +435,6 @@ Rano IDE is **freeware with private application source**. Included/downloaded th
 
 Read [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [DEPENDENCY_SOURCE_ACCESS.md](DEPENDENCY_SOURCE_ACCESS.md). Apple SDKs, project sources, credentials, signing profiles and developer build caches are excluded from the published release assets.
 
-Read the [full 1.0.18 audit](docs/AUDIT-1.0.18.md) for findings, verification and remaining limits.
+Read the [full 1.0.19 audit](docs/AUDIT-1.0.19.md) for findings, verification and remaining limits.
 
 For 1.0.14, the shared bundle generator writes standard Xcode product identity fields from the matching verified SDK import before signing. This corrects the omission left in 1.0.13's report-only metadata change. The actual Linux compiler and host remain separately recorded; no macOS host or stable build identifier is invented. **Check before upload** and the UI delivery guard reject missing, testing, conflicting and known unaccepted beta identities before transfer. **Release IPAs → Export details…** exposes the generated fields. Existing IPAs are unchanged; create a new archive to use the fix. Local verification does not establish Apple App Review acceptance of a new build. Transfer/signing and asset compilation implementations remain unchanged. The earlier WSL recovery protections and documented project/setup limitations remain applicable.
