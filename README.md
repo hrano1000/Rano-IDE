@@ -6,20 +6,19 @@
 
 Rano IDE brings project files, build commands, dependency setup, iPhone connections and App Store Connect delivery into one desktop application. Its supported build paths run locally on Windows through WSL; Rano IDE does not send your project to a build server operated by us.
 
-**Current release: 1.0.21 · Windows x64 · Free to download and use · Application source is private.**
+**Current release: 1.0.23 · Windows x64 · Free to download and use · Application source is private.**
 
-👉 **[Download Rano IDE 1.0.21](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.21/RanoIDESetup-1.0.21.exe)**
+👉 **[Download Rano IDE 1.0.23](https://github.com/hrano1000/Rano-IDE/releases/download/v1.0.23/RanoIDESetup-1.0.23.exe)**
 
 📦 **[All releases and downloads](https://github.com/hrano1000/Rano-IDE/releases)** · 🐛 **[Report a problem](https://github.com/hrano1000/Rano-IDE/issues)** · 📜 **[License](LICENSE)** · 🔐 **[Privacy and security](SECURITY.md)**
 
 This public repository contains the downloads, user documentation, branding and dependency notices. It does not publish the Rano IDE desktop application's development source. GitHub's automatically generated repository ZIP contains these documents; choose the **EXE installer** to install the application.
 
-## 🆕 What's new in 1.0.21
+## 🆕 What's new in 1.0.23
 
-- 🛠️ Corrects Apple-ID capability readback when Developer Services omits the public API's capability-type field.
-- ✅ Recognizes enabled Apple sign-in, push and other capabilities for the exact project App ID.
-- 🛡️ Rejects disabled and unrelated capability resources; actual provisioning-profile permission checks remain required.
-- 📱 Preserves custom-command Run, existing Apple sign-in grouping and the established App Store delivery workflow.
+- 🔎 **Check before upload** finds the matching App Store Connect app when an account is connected, then checks the release and build number.
+- 📄 If Apple blocks API access because an agreement is missing or expired, the IDE explains where the Account Holder can review the terms.
+- 📱 Includes the iPhone developer connection improvements from 1.0.22.
 
 ## 🧭 Contents
 
@@ -65,7 +64,7 @@ Rano IDE provides:
 
 Rano IDE is a practical development tool with experimental compiler integrations. It is not a complete replacement for every Xcode feature or every iOS project's build tools.
 
-| Project or artifact | What is available in 1.0.21 | What to know before using it |
+| Project or artifact | What is available in 1.0.23 | What to know before using it |
 | --- | --- | --- |
 | Flutter | Local Debug/Release iOS builds, release AOT compilation, IPA output, archives and supported iPhone Run workflows | Native plugins must be compatible with the local compiler or a supported adapter. Downloading a package alone cannot make an unsupported native implementation work. Profile builds are not supported. |
 | SwiftPM applications compatible with xtool | Local Swift application builds, Debug/Release configuration and existing signing/device workflows | An arbitrary Swift library package is not automatically an installable iOS application. The project needs an appropriate application configuration. |
@@ -104,7 +103,7 @@ Large projects and compiler setup can need substantial time, memory and storage.
 
 The installer shows **Create a desktop shortcut**, checked by default. A Start menu shortcut is also created. Clear the desktop checkbox if you prefer to launch from the Start menu.
 
-1. Download **RanoIDESetup-1.0.21.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.21).
+1. Download **RanoIDESetup-1.0.23.exe** from the [official release page](https://github.com/hrano1000/Rano-IDE/releases/tag/v1.0.23).
 2. Compare the download with the release's **SHA256SUMS.txt** if you want to verify its integrity. On Windows, the file's SHA-256 can be checked with a checksum utility or `Get-FileHash`.
 3. Open the EXE and choose **Install & open Rano IDE**.
 4. The application installs under your Windows user's local Programs directory and creates desktop/Start menu shortcuts.
@@ -357,7 +356,7 @@ You need your own Apple Developer/App Store Connect access, an app record with t
 
 Saved credentials and valid signing assets are reused. You normally do not repeat setup for every upload. New bundle IDs/extensions, changed capabilities, expiry, revoked assets, different teams or lost credentials can require new setup.
 
-For App Store Connect delivery, select the matching Apple app in **Release IPAs**, use **Check before upload**, review the result and select **Upload…** with the explicit confirmation. A local export does not upload by itself.
+For App Store Connect delivery, select the IPA in **Release IPAs** and use **Check before upload** to find the matching Apple app and check its release and build number. Review the result, then select **Upload…** and confirm the delivery.
 
 Apple's membership requirements, app-record rules, permissions, agreements and signing restrictions still apply. Rano IDE does not bypass those controls.
 
@@ -373,7 +372,7 @@ Interrupted or uncertain submissions are **not automatically re-uploaded**. Chec
 
 ## 🔢 Versions and build numbers
 
-Rano IDE's **1.0.21** version is separate from your application's version.
+Rano IDE's **1.0.23** version is separate from your application's version.
 
 - Flutter normally gets app version/build from `pubspec.yaml` and supported build overrides.
 - Native Xcode projects use their selected configuration's marketing/build settings.
@@ -413,7 +412,8 @@ Protected credentials are tied to the Windows user account. Copying an encrypted
 | Custom command fails | Confirm the selected project, Bash syntax, relative paths, installed tools and supported flags. Put required environment values in the same script as the build or use configuration mappings. |
 | Archive list is empty | Ensure the selected project actually completed an archive build. A failed build creates no new archive. **View → Archives** only displays existing history. |
 | Certificate/profile validation fails | Check team, private-key availability, expiry, bundle/extension IDs, certificate authorization and capabilities in **Signing setup**. |
-| Upload button is disabled | Select a valid release IPA, connect the API account, refresh matching apps and choose the matching destination. Review the actual prerequisite/status message. |
+| Upload button is disabled | Select a release IPA, connect the App Store Connect account and click **Check before upload**. Read the result in **Upload output**. |
+| Apple requires an updated agreement | The Apple Account Holder reviews pending terms on the Apple Developer account page or in **App Store Connect → Business → Agreements**, then retries the check. |
 | Duplicate/conflicting build | Check the existing version/build in Apple and use the explicit or automatic build-number controls. Do not submit the same occupied combination again. |
 | Closed release train: 90186 / 90062 | Use a marketing version higher than the approved/closed version as Apple requires; a build-number-only change is insufficient. |
 | Missing icons: 90022 / 90023 / 90713 | Check original artwork, required sizes, device-family declarations and app-icon metadata. Build a fresh corrected artifact and inspect it before another upload. |
@@ -434,6 +434,6 @@ Rano IDE is **freeware with private application source**. Included/downloaded th
 
 Read [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [DEPENDENCY_SOURCE_ACCESS.md](DEPENDENCY_SOURCE_ACCESS.md). Apple SDKs, project sources, credentials, signing profiles and developer build caches are excluded from the published release assets.
 
-Read the [full 1.0.21 audit](docs/AUDIT-1.0.21.md) for findings, verification and remaining limits.
+Read the [1.0.23 App Store Connect notes](docs/AUDIT-1.0.23.md) and the [1.0.21 audit](docs/AUDIT-1.0.21.md) for earlier verification and limitations.
 
 For 1.0.14, the shared bundle generator writes standard Xcode product identity fields from the matching verified SDK import before signing. This corrects the omission left in 1.0.13's report-only metadata change. The actual Linux compiler and host remain separately recorded; no macOS host or stable build identifier is invented. **Check before upload** and the UI delivery guard reject missing, testing, conflicting and known unaccepted beta identities before transfer. **Release IPAs → Export details…** exposes the generated fields. Existing IPAs are unchanged; create a new archive to use the fix. Local verification does not establish Apple App Review acceptance of a new build. Transfer/signing and asset compilation implementations remain unchanged. The earlier WSL recovery protections and documented project/setup limitations remain applicable.
